@@ -15,8 +15,7 @@ class Pymesh < Formula
   depends_on "eigen"
   depends_on :python3 => ["numpy", "scipy"]
   depends_on "google-sparsehash" => :recommended
-  if build.head?
-  depends_on "cgal@4.10" => :recommended
+  depends_on "cgal@4.10" => ["with-eigen", :recommended]
   depends_on "tetgen" => :recommended
   depends_on "libigl" => :recommended
   depends_on "cork" => :recommended
@@ -26,7 +25,7 @@ class Pymesh < Formula
   depends_on "carve" => :recommended
 
   def install
-
+      # do the actual install.
   end
 
   test do
