@@ -14,26 +14,19 @@ class Pymesh < Formula
   depends_on "boost"
   depends_on "eigen"
   depends_on :python3 => ["numpy", "scipy"]
-  depends_on "google-sparsehash" :recommended
-  depends_on "cgal" => ["4.10", :recommended]
-  depends_on "tetgen" :recommended
-  depends_on "libigl" :recommended
-  depends_on "cork" :recommended
-  depends_on "triangle" :recommended
-  depends_on "qhull" :recommended
-  depends_on "libclipper" :recommended
-  depends_on "carve" :recommended
+  depends_on "google-sparsehash" => :recommended
+  if build.head?
+  depends_on "cgal@4.10" => :recommended
+  depends_on "tetgen" => :recommended
+  depends_on "libigl" => :recommended
+  depends_on "cork" => :recommended
+  depends_on "triangle" => :recommended
+  depends_on "qhull" => :recommended
+  depends_on "libclipper" => :recommended
+  depends_on "carve" => :recommended
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
 
-    # Remove unrecognized options if warned by configure
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
-    # system "cmake", ".", *std_cmake_args
-    system "make", "install" # if this fails, try separate make/make install steps
   end
 
   test do
