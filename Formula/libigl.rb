@@ -6,9 +6,8 @@ class Libigl < Formula
   desc "libigl is a simple C++ geometry processing library. This is the header-only version."
   homepage ""
   version "1.2.1"
-  url "https://github.com/libigl/libigl.git" 
-    :revision => "30aff4877166881ddcc3a7fc559ca62377d2b63e", 
-  end 
+  url "https://github.com/libigl/libigl.git", 
+    :revision => "30aff4877166881ddcc3a7fc559ca62377d2b63e"
 
   head "https://github.com/libigl/libigl.git"
 
