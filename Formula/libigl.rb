@@ -3,11 +3,11 @@
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 
 class Libigl < Formula
-  desc "libigl is a simple C++ geometry processing library. This is the header-only version."
+  desc "libigl is a simple C++ geometry processing library."
   homepage ""
   version "1.2.1"
-  url "https://github.com/libigl/libigl.git", 
-    :revision => "30aff4877166881ddcc3a7fc559ca62377d2b63e"
+  url "https://github.com/libigl/libigl/archive/30aff4877166881ddcc3a7fc559ca62377d2b63e.zip"
+  sha256 "c71bc8d5f53d28544f5cac64de3b679ba5168330af6f3de5e67ffa974673075b"
 
   head "https://github.com/libigl/libigl.git"
 
