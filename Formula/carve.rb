@@ -1,7 +1,3 @@
-# Documentation: http://docs.brew.sh/Formula-Cookbook.html
-#                http://www.rubydoc.info/github/Homebrew/brew/master/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-
 class Carve < Formula
   desc "Carve is a fast, robust constructive solid geometry library."
   homepage "http://code.google.com/p/carve"

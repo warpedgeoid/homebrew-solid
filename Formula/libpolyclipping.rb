@@ -1,7 +1,3 @@
-# Documentation: http://docs.brew.sh/Formula-Cookbook.html
-#                http://www.rubydoc.info/github/Homebrew/brew/master/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-
 class Libpolyclipping < Formula
   desc "An open source freeware library for clipping and offsetting lines and polygons."
   homepage "http://www.angusj.com/delphi/clipper.php"
