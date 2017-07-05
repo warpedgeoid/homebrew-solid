@@ -4,11 +4,9 @@
 
 class Libigl < Formula
   desc "libigl is a simple C++ geometry processing library."
-  homepage ""
-  version "1.2.1"
-  url "https://github.com/libigl/libigl/archive/30aff4877166881ddcc3a7fc559ca62377d2b63e.zip"
-  sha256 "c71bc8d5f53d28544f5cac64de3b679ba5168330af6f3de5e67ffa974673075b"
-
+  homepage "http://libigl.github.io/libigl/"
+  url "https://github.com/libigl/libigl.git", :revision => "3abd9ae411cb642b8f3cd7c925acb4dbfedc7ff9"
+  version "1.2.1"  
   head "https://github.com/libigl/libigl.git"
 
   depends_on "eigen"
@@ -18,15 +16,25 @@ class Libigl < Formula
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test libigl`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
+    #include <igl/cotmatrix.h>
+    # #include <Eigen/Dense>
+    # #include <Eigen/Sparse>
+    # #include <iostream>
+    # int main()
+    # {
+    #   Eigen::MatrixXd V(4,2);
+    #   V<<0,0,
+    #      1,0,
+    #      1,1,
+    #      0,1;
+    #   Eigen::MatrixXi F(2,3);
+    #   F<<0,1,2,
+    #      0,2,3;
+    #   Eigen::SparseMatrix<double> L;
+    #   igl::cotmatrix(V,F,L);
+    #   std::cout<<"Hello, mesh: "<<std::endl<<L*V<<std::endl;
+    #   return 0;
+    # }
     system "false"
   end
 end

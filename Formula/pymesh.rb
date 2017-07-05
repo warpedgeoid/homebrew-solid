@@ -1,6 +1,14 @@
 class Pymesh < Formula
   desc "PyMesh is a rapid prototyping platform focused on geometry processing."
   homepage "http://pymesh.readthedocs.org/en/latest/"
+
+  url "https://github.com/qnzhou/PyMesh.git",
+    :using => :git,
+    :revision => "dad3119d867fd06019944a5dca890831549f18bb"
+
+  # version is date-based due to git.
+  version "20170704"
+
   head "https://github.com/qnzhou/PyMesh.git"
 
   depends_on "cmake" => :build
@@ -9,6 +17,8 @@ class Pymesh < Formula
   depends_on "eigen"
   depends_on :python => ["numpy", "scipy"]
   depends_on "google-sparsehash" => :recommended
+  depends_on "homebrew/science/suite-sparse"
+  depends_on "quartet" => :recommended
   depends_on "tetgen" => :recommended
   depends_on "triangle" => :recommended
   depends_on "qhull" => :recommended
@@ -32,6 +42,8 @@ class Pymesh < Formula
     ENV["QHULL_PATH"] = Formula["qhull"].opt_prefix
     ENV["CLIPPER_PATH"] = Formula["libpolyclipping"].opt_prefix
     ENV["CARVE_PATH"] = Formula["carve"].opt_prefix
+    ENV["METIS_PATH"] = Formula["metis"].opt_prefix
+    ENV["SUITESPARSE_ROOT"] = Formula["suite-sparse"].opt_prefix
 
     mkdir "build" do
       system "cmake", "..", *std_cmake_args
@@ -42,8 +54,7 @@ class Pymesh < Formula
     end
 
     system "python", *Language::Python.setup_install_args(prefix)
-
-    docs.install Dir["docs/*"]
+    doc.install Dir["docs/*"]
   end
 
   test do
