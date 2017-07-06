@@ -5,18 +5,27 @@
 class Cork < Formula
   desc "A boolean/CSG library supporting operations between triangle meshes."
   homepage "https://github.com/gilbo/cork"
-  head "https://github.com/gilbo/cork.git"
+  url "https://github.com/libigl/cork.git", 
+    :revision => "adf814edd555cb4245edf6f539eddb7880edf195"
+  version "20160317"
+
+  head "https://github.com/libigl/cork.git"
+
+ depends_on "cmake" => :build
 
   def install
-    # replace the GMP paths with those of the current version.
-    inreplace "makeConstants", /GMP_INC_DIR = (.*)/, "GMP_INC_DIR = " + Formula["gmp"].opt_include
-    inreplace "makeConstants", /GMP_LIB_DIR = (.*)/, "GMP_LIB_DIR = " + Formula["gmp"].opt_lib 
-    # build the package.
-    make
-    # copy the binaries into the package directory structure.
-    include.install Dir["include/*"]
-    bin.install Dir["bin/*"]
-    lib.install Dir["lib/*"]
+    inreplace "CMakeLists.txt", 
+      "-DNO_TIMER -DREDUCED -DCDT_ONLY -DTRILIBRARY -DANSI_DECLARATORS )",
+      "-DNO_TIMER -DREDUCED -DTRILIBRARY -DANSI_DECLARATORS )"
+    mkdir "build" do
+      system "cmake", "..", *std_cmake_args
+      # build the package.
+      system "make"
+
+      bin.install "cork"
+      lib.install "libcork.a"
+    end
+    include.install Dir.glob("src/**/*.h")
   end
 
   test do
